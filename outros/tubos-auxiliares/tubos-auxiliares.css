@@ -1,0 +1,96 @@
+
+        .tubos-container {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #1e4a72;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tubos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tubo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tubo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tubo-image {
+            height: 200px;
+            overflow: hidden;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tubo-image img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .tubo-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .tubo-info h3 {
+            font-size: 1.2rem;
+            color: #1e4a72;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .btn-voltar {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-voltar:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .tubos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    

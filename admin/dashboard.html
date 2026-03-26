@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin </title>
+    <link rel="icon" type="image/png" href="../public/Camping-bg.png">
+    <!-- Estilos CSS do admin -->
+    <link rel="stylesheet" href="admin.css">
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Biblioteca Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="dashboard-page-dark">
+    <!-- Barra Lateral (Menu de Navegação) -->
+    <aside class="sidebar">
+        <!-- Cabeçalho da sidebar com logo -->
+        <div class="sidebar-header">
+            <img src="../public/Camping-bg.png" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand">
+                <span class="brand-light">Camping</span>
+                <span class="brand-bold">Faustino</span>
+            </div>
+        </div>
+
+        <!-- Menu de navegação -->
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <!-- Link para Dashboard principal -->
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <!-- Link para seção de Mensagens -->
+                <a href="messages.html" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensagens</span>
+                    <!-- Badge com contador de mensagens não lidas -->
+                    <span class="badge" id="sidebarBadge">0</span>
+                </a>
+                <!-- Link para Análise Financeira -->
+                <a href="finance.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Análise Financeira</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-wrapper">
+        <!-- Cabeçalho Superior -->
+        <header class="top-header">
+            <div class="header-left">
+                <!-- Botão de menu para mobile -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Caixa de pesquisa -->
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Pesquisar mensagens...">
+                </div>
+            </div>
+            <div class="header-right">
+                <!-- Botão para voltar ao site -->
+                <button class="header-icon" onclick="window.location.href='../index.html'" title="Voltar ao Site">
+                    <i class="fas fa-home"></i>
+                </button>
+                <!-- Botão de logout -->
+                <button class="header-icon" onclick="logout()" title="Terminar Sessão">
+                    <i class="fas fa-power-off"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Conteúdo do Dashboard -->
+        <main class="dashboard-content">
+            <h1 class="page-title">Painel de Controle</h1>
+
+            <!-- Gráfico Financeiro -->
+            <div class="dashboard-card full-width" id="analytics">
+                <div class="card-header">
+                    <h3>Análise Financeira Anual</h3>
+                    <div class="card-actions">
+                        <!-- Botão para adicionar nova entrada financeira -->
+                        <button class="btn-add-entry" id="btnAddEntry">
+                            <i class="fas fa-plus"></i> Adicionar Entrada
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Formulário de entrada de dados financeiros -->
+                    <div class="finance-form" id="financeForm" style="display: none;">
+                        <form id="addFinanceForm">
+                            <input type="hidden" id="financeEditId" value="">
+                            <div class="form-row-finance">
+                                <!-- Campo de data -->
+                                <div class="form-group-finance">
+                                    <label for="financeMonth">Data</label>
+                                    <input type="date" id="financeMonth" required>
+                                </div>
+                                <!-- Campo de custo de material -->
+                                <div class="form-group-finance">
+                                    <label for="financeDespesas">Custo Material (€)</label>
+                                    <input type="number" id="financeDespesas" placeholder="0.00" step="0.01" min="0" required>
+                                </div>
+                                <!-- Campo de lucro/ganho -->
+                                <div class="form-group-finance">
+                                    <label for="financeLucros">Ganho/Lucro (€)</label>
+                                    <input type="number" id="financeLucros" placeholder="0.00" step="0.01" min="0" required>
+                                </div>
+                                <!-- Campo de observações/notas -->
+                                <div class="form-group-finance full-width">
+                                    <label for="financeNotes">Observações (opcional)</label>
+                                    <textarea id="financeNotes" placeholder="Ex: Venda de 3 toldos para cliente João" rows="2"></textarea>
+                                </div>
+                                <!-- Botões de ação do formulário -->
+                                <div class="form-actions-finance">
+                                    <button type="submit" class="btn-save">
+                                        <i class="fas fa-save"></i> Guardar
+                                    </button>
+                                    <button type="button" class="btn-cancel" id="btnCancelEntry">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Tabela de registros financeiros -->
+                    <div class="finance-records" id="financeRecords"></div>
+                    
+                    <!-- Container do gráfico Chart.js -->
+                    <div class="chart-container-large">
+                        <canvas id="financesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Mensagens -->
+            <div class="dashboard-card full-width" id="messages">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-inbox"></i>
+                        Mensagens Recebidas
+                    </h3>
+                    <!-- Filtros de mensagens -->
+                    <div class="message-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            Todas (<span id="countAll">0</span>)
+                        </button>
+                        <button class="filter-btn" data-filter="unread">
+                            Não Lidas (<span id="countUnread">0</span>)
+                        </button>
+                        <button class="filter-btn" data-filter="read">
+                            Lidas (<span id="countRead">0</span>)
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Lista de mensagens -->
+                    <div id="messagesList" class="messages-list">
+                        <!-- Estado vazio quando não há mensagens -->
+                        <div class="no-messages">
+                            <i class="fas fa-inbox"></i>
+                            <p>Nenhuma mensagem recebida</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <!-- Appwrite SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    <!-- Configuração do Appwrite -->
+    <script src="appwrite-config.js"></script>
+    <!-- Script de autenticação -->
+    <script src="auth.js"></script>
+    <!-- Gerenciamento de mensagens -->
+    <script src="messages-db.js"></script>
+    <!-- Lógica principal do dashboard -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

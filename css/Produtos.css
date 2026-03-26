@@ -1,0 +1,612 @@
+/* Estilos específicos da página de produtos */
+
+/* Hero Section da Página de Produtos */
+.produtos-hero {
+    background: linear-gradient(135deg, rgba(30, 74, 114, 0.9), rgba(41, 128, 185, 0.9)), 
+                url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHhwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;
+    padding: 150px 0 100px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.produtos-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 74, 114, 0.7);
+}
+
+.produtos-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.produtos-hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.produtos-hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Menu ativo */
+.nav-menu a.active {
+    color: #1e4a72;
+    font-weight: 600;
+}
+
+/* Seção de Categorias */
+.categorias-produtos {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.categorias-produtos h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1e4a72;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(30, 74, 114, 0.1);
+}
+
+.categorias-produtos h2::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: #2980b9;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 2rem;
+}
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(263px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.categoria-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: 263px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categoria-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease;
+}
+
+.categoria-card:hover::before {
+    left: 100%;
+}
+
+.categoria-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(30, 74, 114, 0.15);
+}
+
+.categoria-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #1e4a72, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: all 0.3s ease;
+}
+
+.categoria-card:hover .categoria-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.categoria-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.categoria-card h3 {
+    font-size: 1.8rem;
+    color: #1e4a72;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.categoria-card > p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.categoria-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.categoria-features li {
+    padding: 0.8rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.categoria-features li:last-child {
+    border-bottom: none;
+}
+
+.categoria-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #1e4a72;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-categoria {
+    background: linear-gradient(135deg, #1e4a72, #2980b9);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-categoria:hover {
+    background: linear-gradient(135deg, #1a3a5f, #1e4a72);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30, 74, 114, 0.3);
+}
+
+/* CTA Section */
+.cta-produtos {
+    background: linear-gradient(135deg, #1e4a72, #2980b9);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+.cta-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-buttons .btn-secondary:hover {
+    background: white;
+    color: #1e4a72;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 400%; /* 4 slides */
+}
+
+.produto-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 25%; /* Para 4 slides */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+}
+
+.produto-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Carrossel de Imagens Individual */
+.produto-image-carousel {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.image-carousel {
+    position: relative;
+    height: 100%;
+}
+
+.image-carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image-carousel img.active {
+    opacity: 1;
+}
+
+/* Botões do carrossel de imagens */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #2c5530;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0;
+}
+
+.produto-image-carousel:hover .carousel-btn {
+    opacity: 1;
+}
+
+.carousel-btn:hover {
+    background: rgba(44, 85, 48, 0.9);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+/* Indicadores das imagens */
+.image-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Navegação do carrossel principal */
+.main-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.main-nav-btn {
+    background: #1e4a72;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.main-nav-btn:hover {
+    background: #1a3a5f;
+    transform: scale(1.1);
+}
+
+.main-indicators {
+    display: flex;
+    gap: 12px;
+}
+
+.main-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.main-indicator.active {
+    background: #1e4a72;
+    transform: scale(1.3);
+}
+
+.main-indicator:hover {
+    background: #2980b9;
+}/* Responsividade adicional para carrossel */
+@media (max-width: 1024px) {
+    .produto-card {
+        min-height: 550px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .produto-image-carousel {
+        height: 250px;
+    }
+    
+    .carousel-btn {
+        opacity: 1; /* Sempre visível no mobile */
+    }
+    
+    .main-carousel-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Animações suaves */
+.produto-card {
+    transition: all 0.3s ease;
+}
+
+.produto-card.active {
+    transform: scale(1.02);
+}.produto-info {
+    padding: 2rem;
+}
+
+.produto-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e4a72;
+}
+
+.produto-info p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.produto-info ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.produto-info li {
+    padding: 0.5rem 0;
+    color: #666;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.produto-info li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #1e4a72;
+    font-weight: bold;
+}
+
+/* Estilos para categorias de produtos */
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.categoria-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.categoria-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
+}
+
+.categoria-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+}
+
+.categoria-card:hover .categoria-icon {
+    transform: scale(1.1);
+}
+
+/* Responsividade para títulos */
+@media (max-width: 768px) {
+    .categorias-produtos h2 {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .categorias-produtos h2 {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .categorias-produtos h2::after {
+        width: 80px;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.categoria-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.btn-categoria {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-categoria:hover {
+    background: linear-gradient(135deg, #2980b9, #21618c);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsividade para categorias */
+@media (max-width: 768px) {
+    .categorias-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .categoria-card {
+        padding: 25px 15px;
+    }
+    
+    .categoria-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
