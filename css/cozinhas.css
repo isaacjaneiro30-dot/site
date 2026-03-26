@@ -182,8 +182,8 @@
 
 @media (max-width: 768px) {
     .produtos-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .page-header h1 {
@@ -191,20 +191,38 @@
     }
 
     .produto-image {
-        height: 200px;
+        height: 150px;
     }
 
     .produto-info {
-        padding: 20px;
+        padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .cozinhas-container {
-        padding: 40px 0;
+        padding: 30px 0;
+    }
+
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .produto-info h3 {
+        font-size: 1rem;
+    }
+
+    .btn-detalhes {
+        padding: 8px 15px;
+        font-size: 0.85rem;
     }
 }
