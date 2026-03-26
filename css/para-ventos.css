@@ -23,6 +23,7 @@
     border-radius: 25px;
     font-weight: 600;
     margin-bottom: 30px;
+    margin-top: 20px;
     transition: background 0.3s ease;
 }
 
@@ -222,3 +223,4 @@
         font-size: 0.9rem;
     }
 }
+
